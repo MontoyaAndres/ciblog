@@ -7,6 +7,7 @@ services:
     restart: always
     volumes:
       - mysqldata:/var/lib/mysql
+      - ./ciblog.sql:/ciblog.sql
     ports:
       - "8999:3306"
     environment:
