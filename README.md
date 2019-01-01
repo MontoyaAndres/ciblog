@@ -7,4 +7,4 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 
 ## Next video
 
-https://www.youtube.com/watch?v=ay_w82osHpM&index=3&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS
+https://www.youtube.com/watch?v=ay_w82osHpM&index=3&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS // 19:25

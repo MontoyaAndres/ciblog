@@ -13,12 +13,24 @@ services:
     environment:
       MYSQL_DATABASE: ciblog
       MYSQL_ROOT_PASSWORD: root
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    ports:
+     - "8081:80"
+    depends_on:
+      - db
+    links: 
+      - db:db
 
   apache:
     build:
       context: .
     ports:
-    - "80:80"
+    - "8080:80"
     volumes:
       - ./:/var/www/html
     depends_on:
