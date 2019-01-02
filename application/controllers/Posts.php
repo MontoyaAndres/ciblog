@@ -20,8 +20,8 @@
       $data['title'] = $data['post']['title'];
 
       $this->load->view('templates/header');
-			$this->load->view('posts/view', $data);
-			$this->load->view('templates/footer');
+      $this->load->view('posts/view', $data);
+      $this->load->view('templates/footer');
     }
 
     public function create() {
@@ -37,15 +37,14 @@
         $this->load->view('templates/footer');
       } else {
         // Upload image
-				$config['upload_path'] = 'assets/images/posts';
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size'] = 2048;
-				$config['max_width'] = 2000;
+        $config['upload_path'] = './assets/images/posts';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2048;
+        $config['max_width'] = 2000;
         $config['max_height'] = 2000;
 
         $this->load->library('upload', $config);
 
-        print_r($_POST);
         if (!$this->upload->do_upload('userfile')) {
           $errors = array('error' => $this->upload->display_errors());
           $post_image = 'noimage.jpg';
@@ -76,8 +75,8 @@
       $data['title'] = 'Edit post';
 
       $this->load->view('templates/header');
-			$this->load->view('posts/edit', $data);
-			$this->load->view('templates/footer');
+      $this->load->view('posts/edit', $data);
+      $this->load->view('templates/footer');
     }
 
     public function update() {
