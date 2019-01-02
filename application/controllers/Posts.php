@@ -45,17 +45,20 @@
 
         $this->load->library('upload', $config);
 
+        $this->upload->initialize($config);
+
         if (!$this->upload->do_upload('userfile')) {
           $errors = array('error' => $this->upload->display_errors());
+          print_r($config);
+          print_r($errors);
           $post_image = 'noimage.jpg';
         } else {
           $data = array('upload_data' => $this->upload->data());
           $post_image = $_FILES['userfile']['name'];
         }
-        echo $post_image;
 
-        /* $this->post_model->create_post($post_image);
-        redirect('posts'); */
+        $this->post_model->create_post($post_image);
+        redirect('posts');
       }
     }
 
