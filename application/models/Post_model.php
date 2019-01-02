@@ -53,4 +53,11 @@
       $query = $this->db->get('Category');
       return $query->result_array();
     }
+
+    public function get_posts_by_category($category_id) {
+      $this->db->order_by('Post.id', 'DESC');
+      $this->db->join('Category', 'Category.id = Post.category_id');
+      $query = $this->db->get_where('Post', array('category_id' => $category_id));
+			return $query->result_array();
+    }
   }
