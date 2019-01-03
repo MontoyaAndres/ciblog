@@ -22,6 +22,9 @@
         $this->load->view('templates/footer');
       } else {
         $this->category_model->create_category();
+
+        $this->session->set_flashdata('category_created', 'Your category has been created');
+
         redirect('categories');
       }
     }
