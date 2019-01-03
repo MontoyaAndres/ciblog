@@ -1,6 +1,6 @@
 ## Next video
 
-https://www.youtube.com/watch?v=qS0a4nKQ6h8&index=6&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS
+https://www.youtube.com/watch?v=WoQTjJepDWM&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS&index=8
 
 ## Error, MySQL auth.
 

@@ -1,5 +1,12 @@
 <?php
   class Comments extends CI_Controller {
+    public function __construct() {
+      parent::__construct();
+      if (!$this->session->userdata('logged_in')) {
+        redirect('users/login');
+      }
+    }
+
     public function create($post_id) {
       $slug = $this->input->post('slug');
       $data['post'] = $this->post_model->get_posts($slug);

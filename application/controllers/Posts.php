@@ -1,6 +1,13 @@
 <?php
 
   class Posts extends CI_Controller {
+    public function __construct() {
+      parent::__construct();
+      if (!$this->session->userdata('logged_in')) {
+        redirect('users/login');
+      }
+    }
+
     public function index() {
       $data['title'] = 'Latest posts';
       $data['posts'] = $this->post_model->get_posts();
@@ -51,12 +58,10 @@
 
         if (!$this->upload->do_upload('userfile')) {
           $errors = array('error' => $this->upload->display_errors());
-          print_r($config);
-          print_r($errors);
           $post_image = 'noimage.jpg';
         } else {
           $data = array('upload_data' => $this->upload->data());
-          $post_image = $_FILES['userfile']['name'];
+          $post_image = str_replace(' ', '_', $_FILES['userfile']['name']);
         }
 
         $this->post_model->create_post($post_image);
@@ -78,6 +83,11 @@
     public function edit($slug) {
       $data['post'] = $this->post_model->get_posts($slug);
       $data['categories'] = $this->post_model->get_categories();
+
+      // Check right user
+      if ($this->session->userdata('user_id') !== $data['post']['user_id']) {
+        redirect('posts');
+      }
 
       if(empty($data['post'])){
 				show_404();
