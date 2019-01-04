@@ -4,7 +4,11 @@
       $this->load->database();
     }
 
-    public function get_posts($slug = FALSE) {
+    public function get_posts($slug = FALSE, $limit = FALSE, $offset = FALSE) {
+      if ($limit) {
+        $this->db->limit($limit, $offset);
+      }
+
       if (!$slug) {
         $this->db->order_by('Post.id', 'DESC');
         $this->db->join('Category', 'Category.id = Post.category_id');
@@ -31,6 +35,13 @@
     }
 
     public function delete_post($id) {
+      $image_file_name = $this->db->select('post_image')->get_where('Post', array('id' => $id))->row()->post_image;
+
+      if ($image_file_name !== "noimage.jpg") {
+        $image_file_path = APPPATH."../assets/images/posts/".$image_file_name;
+        unlink($image_file_path);
+      }
+
       $this->db->where('id', $id);
       $this->db->delete('Post');
       return true;

@@ -8,9 +8,18 @@
       }
     }
 
-    public function index() {
+    public function index($offset = 0) {
+      // Pagination Config	
+			$config['base_url'] = base_url().'posts/index/';
+			$config['total_rows'] = $this->db->count_all('Post');
+			$config['per_page'] = 3;
+			$config['uri_segment'] = 3;
+			$config['attributes'] = array('class' => 'pagination-links');
+			// Init Pagination
+			$this->pagination->initialize($config);
+
       $data['title'] = 'Latest posts';
-      $data['posts'] = $this->post_model->get_posts();
+      $data['posts'] = $this->post_model->get_posts(FALSE, $config['per_page'], $offset);
 
       $this->load->view('templates/header');
       $this->load->view('posts/index', $data);

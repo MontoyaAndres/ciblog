@@ -45,4 +45,12 @@
       $this->load->view('posts/index', $data);
       $this->load->view('templates/footer');
     }
+
+    public function delete($id){
+			$this->category_model->delete_category($id);
+
+      $this->session->set_flashdata('category_deleted', 'Your category has been deleted');
+
+			redirect('categories');
+		}
   }
