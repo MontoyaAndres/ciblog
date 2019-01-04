@@ -1,6 +1,4 @@
-## Next video
-
-https://www.youtube.com/watch?v=WoQTjJepDWM&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS&index=8
+You can test it with `sudo docker-compose up --build`. Remember to insert the db backup with `mysql -u root -p ciblog < ciblog.sql`!
 
 ## Error, MySQL auth.
 
