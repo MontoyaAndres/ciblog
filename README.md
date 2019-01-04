@@ -14,7 +14,7 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 ### Error can not upload an image.
 
 ```
-- Getting in to the apache conteiner with:
+- Getting in to the apache container with:
 sudo docker-compose exec apache bash
 
 - Then, execute within /var/www/html/ciblog/assets/images/
